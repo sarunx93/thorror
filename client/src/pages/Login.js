@@ -19,8 +19,8 @@ const Login = () => {
   useEffect(() => {
     if (user) {
       setTimeout(() => {
-        navigate("/addGhost");
-      }, 2500);
+        navigate("/dashboard");
+      }, 1500);
     }
   }, [user]);
 
