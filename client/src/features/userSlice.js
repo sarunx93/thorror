@@ -5,7 +5,7 @@ import {
   addUserToLocalStorage,
   getUserFromLocalStorage,
   removeUserFromLocalStorage,
-} from "../../utils/localStorage";
+} from "../utils/localStorage";
 const initialState = {
   isLoading: false,
   user: getUserFromLocalStorage(),
@@ -18,7 +18,7 @@ export const registerUser = createAsyncThunk(
       const resp = await customFetch.post("/auth/register", user);
       return resp.data;
     } catch (error) {
-      return thunkAPI.rejectedWithValue(error.response.data.msg);
+      return thunkAPI.rejectWithValue(error.response.data.msg);
     }
   }
 );
@@ -30,7 +30,7 @@ export const loginUser = createAsyncThunk(
       const resp = await customFetch.post("/auth/login", user);
       return resp.data;
     } catch (error) {
-      return thunkAPI.rejectedWithValue(error.response.data.msg);
+      return thunkAPI.rejectWithValue(error.response.data.msg);
     }
   }
 );
@@ -42,7 +42,7 @@ export const updateUser = createAsyncThunk(
       const resp = await customFetch.patch("/auth/updateUser", user);
       return resp.data;
     } catch (error) {
-      return thunkAPI.rejectedWithValue(error.response.data.msg);
+      return thunkAPI.rejectWithValue(error.response.data.msg);
     }
   }
 );
@@ -67,11 +67,9 @@ const userSlice = createSlice({
       state.user = user;
       addUserToLocalStorage(user);
       toast.success(`Hello there ${user.name}`);
-      console.log(payload);
     },
     [registerUser.rejected]: (state, { payload }) => {
       state.isLoading = false;
-      console.log(payload);
     },
     [loginUser.pending]: (state) => {
       state.isLoading = true;
@@ -83,11 +81,9 @@ const userSlice = createSlice({
       state.user = user;
       addUserToLocalStorage(user);
       toast.success(`Welcome back ${user.name}`);
-      console.log(payload);
     },
     [loginUser.rejected]: (state, { payload }) => {
       state.isLoading = false;
-      console.log(payload);
     },
     [updateUser.pending]: (state) => {
       state.isLoading = true;

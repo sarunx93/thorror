@@ -14,8 +14,8 @@ import authRouters from "./routes/authRoute.js";
 
 const app = express();
 app.use(express.json());
-app.get("/", (req, res) => {
-  res.send("Welcome");
+app.get("/api/v1", (req, res) => {
+  res.json({ msg: "Welcome" });
 });
 
 if (process.env.NODE_ENV !== "production") {
