@@ -48,7 +48,8 @@ const Login = () => {
   return (
     <Wrapper>
       <form className="form" onSubmit={handleSubmit}>
-        <h1>{values.isMember ? "Login" : "Register"}</h1>
+        <h2 style={{ textAlign: "center" }}>Thorror Admin Panel</h2>
+        <h3>{values.isMember ? "Login" : "Register"}</h3>
         {/* name input */}
         {!values.isMember && (
           <FormRow
@@ -88,6 +89,7 @@ const Login = () => {
 
 const Wrapper = styled.section`
   display: grid;
+  margin-top: 10rem;
   align-items: center;
   .logo {
     display: block;

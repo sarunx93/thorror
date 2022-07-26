@@ -7,7 +7,7 @@ const Sidebar = () => {
         <div className="content">
           <div className="nav-links">
             <NavLink
-              to="/dashboard/addGhost"
+              to="/dashboard/add-ghost"
               key="1"
               className={({ isActive }) =>
                 isActive ? "nav-link active" : "nav-link"
@@ -16,7 +16,7 @@ const Sidebar = () => {
               Add Ghost
             </NavLink>
             <NavLink
-              to="/dashboard/addStory"
+              to="/dashboard/add-story"
               key="2"
               className={({ isActive }) =>
                 isActive ? "nav-link active" : "nav-link"
